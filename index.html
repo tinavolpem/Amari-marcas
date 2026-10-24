@@ -285,8 +285,26 @@ fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width
 .dato .acc a, .dato .acc button { padding: 7px 12px; border-radius: 999px; border: 0; cursor: pointer; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; text-decoration: none; background: var(--terracota); color: var(--arena); }
 .dato .acc button { background: transparent; color: var(--terracota); box-shadow: inset 0 0 0 1px var(--terracota); }
 footer { position: relative; z-index: 1; border-top: 1px solid rgba(238,231,221,.35); }
-footer .wrap { padding-block: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
-footer .wordmark { width: 90px; color: var(--arena); }
+footer .wrap {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+footer .wordmark {
+  width: 180px;
+  margin: 0 auto;
+  color: var(--arena);
+}
+
+footer .wrap span,
+footer .wrap a {
+  text-align: center;
+}
 footer a { text-decoration: none; }
 
 /* botón flotante de WhatsApp */
@@ -341,12 +359,12 @@ footer a { text-decoration: none; }
   <div class="progress" id="progress"></div>
 </nav>
 <div class="sheet" id="sheet" aria-hidden="true">
-  <a href="#que-es" data-go="que-es"><span>01</span>¿Qué es AMARI?</a>
-  <a href="#proxima" data-go="proxima"><span>02</span>Próxima experiencia</a>
-  <a href="#eventos" data-go="eventos"><span>03</span>Eventos anteriores</a>
-  <a href="#marcas" data-go="marcas"><span>04</span>Para marcas</a>
-  <a href="#sumate" data-go="sumate"><span>05</span>Responder invitación</a>
-  <a href="#contacto" data-go="contacto"><span>06</span>Contacto</a>
+  <a href="#que-es" data-go="que-es">¿Qué es AMARI?</a>
+  <a href="#proxima" data-go="proxima">Próxima experiencia</a>
+  <a href="#eventos" data-go="eventos">Eventos anteriores</a>
+  <a href="#marcas" data-go="marcas">Para marcas</a>
+  <a href="#sumate" data-go="sumate">Responder invitación</a>
+  <a href="#contacto" data-go="contacto">Contacto</a>
 </div>
 
 <main id="stack">
@@ -381,10 +399,10 @@ footer a { text-decoration: none; }
     <div class="wordmark" role="img" aria-label="amari"></div>
     <h2 id="agenda-t">AGENDA</h2>
     <ol>
-      <li><a href="#que-es" data-go="que-es"><span>01\</span> ¿Qué es AMARI?</a></li>
-      <li><a href="#proxima" data-go="proxima"><span>02\</span> Nuestra próxima experiencia</a></li>
-      <li><a href="#eventos" data-go="eventos"><span>03\</span> Eventos anteriores</a></li>
-      <li><a href="#marcas" data-go="marcas"><span>04\</span> ¿Qué ofrecemos a las marcas?</a></li>
+      <li><a href="#que-es" data-go="que-es">¿Qué es AMARI?</a></li>
+      <li><a href="#proxima" data-go="proxima">Nuestra próxima experiencia</a></li>
+      <li><a href="#eventos" data-go="eventos">Eventos anteriores</a></li>
+      <li><a href="#marcas" data-go="marcas">¿Qué ofrecemos a las marcas?</a></li>
     </ol>
   </div>
 </section>
@@ -555,12 +573,12 @@ footer a { text-decoration: none; }
     <div class="contacto">
       <div class="dato">
         <small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram</small>
-        <span class="val">@amari_experience</span>
-        <div class="acc"><a href="https://www.instagram.com/amari_experience/" target="_blank" rel="noopener">Ver perfil</a><button type="button" data-copy="@amari_experience">Copiar</button></div>
+        <span class="val">@amari.experience</span>
+        <div class="acc"><a href="https://www.instagram.com/amari.experience/" target="_blank" rel="noopener">Ver perfil</a><button type="button" data-copy="@amari.experience">Copiar</button></div>
       </div>
       <div class="dato">
         <small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg>Email</small>
-        <span class="val">amari.experiences@gmail.com</span>
+        <span class="val">amari_experiences@gmail.com</span>
         <div class="acc"><a href="https://mail.google.com/mail/?view=cm&amp;to=amari.experiences@gmail.com&amp;su=Marca%20para%20AMARI%20Experience" target="_blank" rel="noopener">Escribir</a><button type="button" data-copy="amari.experiences@gmail.com">Copiar</button></div>
       </div>
       <div class="dato">
