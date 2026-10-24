@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Invitación de AMARI Experience para marcas: experiencias para mujeres que unen movimiento, charlas y comunidad.">
+<meta property="og:title" content="AMARI Experience · Invitación para marcas">
+<meta property="og:description" content="Sumá tu marca a nuestro próximo encuentro: 14 de noviembre, Buenos Aires.">
+<meta property="og:type" content="website">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>AMARI Experience para marcas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: bloques de color a ancho completo con fotos y textos que aparecen al deslizar, siguiendo el brief: portada → agenda → qué es → próxima → eventos → marcas → sumá tu marca → contacto. */
+:root {
+  --oliva: #60621D;
+  --oliva-claro: #929433;
+  --salvia: #D8D79A;
+  --rosa: #ECB4B3;
+  --rosa-suave: #F6D9D7;
+  --arena: #EEE7DD;
+  --terracota: #A04842;
+  --tinta: #3B3C12;
+  --sombra: #1d1e08;
+  --font: "Helvetica World", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --w: 1120px;
+  --r: clamp(22px, 3vw, 36px);
+  --nav-h: 60px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--arena); color: var(--tinta); font-family: var(--font); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--arena); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--terracota); outline-offset: 3px; }
+h1, h2, h3 { font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -0.01em; line-height: 1.08; }
+p { margin: 0; }
+.wrap { max-width: var(--w); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* logos como máscara para teñirlos con cualquier color de la marca */
+.emblema, .wordmark { background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.emblema { --m: url(img/emblema.png); aspect-ratio: 1; }
+.wordmark { --m: url(img/amari.png); aspect-ratio: 797 / 187; }
+
+/* ===== NAV ===== */
+.nav { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 50; height: var(--nav-h); background: rgba(238,231,221,.88); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); color: var(--oliva); transform: translateY(-110%); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.nav.on { transform: none; }
+.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nav .wordmark { width: 84px; flex: none; }
+.nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+.nav ul a { display: block; padding: 8px 12px; border-radius: 999px; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; transition: background .25s, color .25s; }
+.nav ul a:hover { background: rgba(96,98,29,.1); }
+.nav ul a.act { background: var(--oliva); color: var(--arena); }
+.nav .cta { padding: 9px 16px; border-radius: 999px; background: var(--terracota); color: var(--arena); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; flex: none; }
+.progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--terracota); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+.menu-btn { display: none; background: none; border: 0; width: 40px; height: 40px; padding: 8px; cursor: pointer; }
+.menu-btn i { display: block; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s; }
+.menu-btn[aria-expanded="true"] i:first-child { transform: translateY(4px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] i:last-child { transform: translateY(-4px) rotate(-45deg); }
+.sheet { position: fixed; inset: 0; z-index: 45; background: var(--oliva); color: var(--arena); padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 28px) max(16px, env(safe-area-inset-right, 0px)) 32px max(16px, env(safe-area-inset-left, 0px)); display: grid; align-content: start; gap: 6px; clip-path: circle(0 at calc(100% - 36px) 30px); transition: clip-path .6s cubic-bezier(.7,0,.2,1); visibility: hidden; }
+.sheet.open { clip-path: circle(150% at calc(100% - 36px) 30px); visibility: visible; }
+.sheet a { font-size: clamp(1.6rem, 8vw, 2.4rem); text-decoration: none; padding: 8px 0; border-bottom: 1px solid rgba(238,231,221,.25); display: flex; gap: 14px; align-items: baseline; }
+.sheet a span { font-size: .8rem; color: var(--salvia); font-variant-numeric: tabular-nums; }
+
+/* ===== SECCIONES ===== */
+.panel { position: relative; overflow: clip; scroll-margin-top: var(--nav-h); }
+
+/* ===== APARICIONES AL DESLIZAR =====
+   Todo es visible por defecto; el script agrega .in cuando el elemento entra en pantalla
+   y la animación arranca desde ahí (fill "backwards" para no pisar los hover). */
+.rv.in { animation: subir .9s cubic-bezier(.2,.7,.2,1) var(--d, 0s) backwards; }
+.rv-t.in { animation: titulo 1.1s cubic-bezier(.2,.7,.2,1) var(--d, 0s) backwards; }
+.rv-img.in { animation: destapar 1.25s cubic-bezier(.7,0,.2,1) var(--d, 0s) backwards; }
+.rv-img.in img { animation: acercar 1.8s cubic-bezier(.2,.7,.2,1) var(--d, 0s) backwards; }
+@keyframes subir { from { opacity: 0; transform: translateY(28px); } }
+@keyframes titulo { from { opacity: 0; transform: translateY(.45em); clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 -30% 0); } }
+@keyframes destapar { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes acercar { from { transform: scale(1.2); } }
+@keyframes kenburns { from { transform: scale(1.22); } to { transform: scale(1.06); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ===== HERO ===== */
+.hero { color: var(--arena); background: var(--oliva); }
+.hero .bg { position: absolute; inset: 0; background: url(img/hojas.webp) center / cover; transform: scale(1.06); animation: kenburns 9s cubic-bezier(.2,.7,.2,1) backwards; }
+.hero .wrap > * { animation: subir 1s cubic-bezier(.2,.7,.2,1) backwards; }
+.hero .wrap > :nth-child(2) { animation-delay: .15s; }
+.hero .wrap > :nth-child(3) { animation-delay: .3s; }
+.hero .wrap > :nth-child(4) { animation-delay: .42s; }
+.hero .wrap > :nth-child(5) { animation-delay: .55s; }
+.hero .wrap > :nth-child(6) { animation-delay: .7s; }
+.hero .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(96,98,29,.3), rgba(96,98,29,.78)); }
+.hero .wrap { position: relative; z-index: 1; padding-block: calc(var(--nav-h) + clamp(40px, 8vw, 90px)) clamp(48px, 8vw, 96px); display: grid; justify-items: center; text-align: center; gap: 26px; }
+.hero .emblema { width: clamp(120px, 15vw, 160px); animation: subir 1s cubic-bezier(.2,.7,.2,1) backwards, respirar 7s ease-in-out 1s infinite; }
+@keyframes respirar { 50% { transform: scale(1.06); } }
+.hero .wordmark { width: min(420px, 78%); }
+.hero h1 { font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; }
+.hero p { max-width: 34em; font-size: 1.05rem; opacity: .94; }
+.hero .acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.scroll-hint { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; opacity: .8; display: grid; justify-items: center; gap: 8px; }
+.scroll-hint::after { content: ""; width: 1px; height: 34px; background: currentColor; transform-origin: top; animation: hint 2.2s ease-in-out infinite; }
+@keyframes hint { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+.marquee { position: relative; z-index: 1; border-top: 1px solid rgba(238,231,221,.3); overflow: hidden; padding-block: 14px; }
+.marquee-track { display: flex; width: max-content; animation: correr 38s linear infinite; }
+.marquee span { padding: 0 22px; font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; white-space: nowrap; display: inline-flex; align-items: center; gap: 22px; }
+.marquee span::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--rosa); }
+@keyframes correr { to { transform: translateX(-50%); } }
+
+.btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; gap: .6em; padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer; font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: transform .3s ease, background .2s ease, color .2s, box-shadow .3s; }
+.btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(255,255,255,.2); transform: translateX(-101%); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(29,30,8,.18); }
+.btn:hover::before { transform: none; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn-arena { background: var(--arena); color: var(--oliva); }
+.btn-linea { background: transparent; color: var(--arena); box-shadow: inset 0 0 0 1px rgba(238,231,221,.7); }
+.btn-terracota { background: var(--terracota); color: var(--arena); }
+.btn-terracota:hover { background: #8a3c37; }
+.btn-oliva { background: var(--oliva); color: var(--arena); }
+.btn-suave { background: var(--rosa-suave); color: var(--terracota); }
+
+/* ===== AGENDA ===== */
+.agenda { display: grid; grid-template-columns: 1fr 1.15fr; background: var(--arena); }
+.agenda figure { margin: 0; position: relative; min-height: 360px; }
+.agenda figure, .quees figure { overflow: hidden; }
+.agenda figure img, .quees figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s cubic-bezier(.2,.7,.2,1), filter .8s; }
+.agenda figure:hover img, .quees figure:hover img { transform: scale(1.06); filter: contrast(1.08); }
+.tag { transition: letter-spacing .6s cubic-bezier(.2,.7,.2,1); }
+figure:hover > .tag { letter-spacing: .28em; }
+.tag { position: absolute; top: 22px; left: 22px; color: var(--arena); font-size: .7rem; letter-spacing: .14em; font-weight: 700; text-transform: uppercase; }
+.agenda .body { padding: clamp(48px, 6vw, 88px) max(16px, env(safe-area-inset-right, 0px)) clamp(48px, 6vw, 88px) clamp(24px, 5vw, 72px); display: grid; align-content: center; gap: 30px; color: var(--oliva); }
+.agenda .wordmark { width: 130px; justify-self: end; }
+.agenda h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+.agenda ol { list-style: none; margin: 0; padding: 0; max-width: 460px; }
+.agenda li a { display: flex; gap: 10px; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--oliva); font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--tinta); transition: padding .25s ease, color .25s ease; }
+.agenda li a::after { content: "→"; margin-left: auto; opacity: 0; transform: translateX(-8px); transition: .25s; color: var(--terracota); }
+.agenda li a:hover { padding-left: 8px; color: var(--terracota); }
+.agenda li a:hover::after { opacity: 1; transform: none; }
+.agenda li span { color: var(--oliva-claro); font-variant-numeric: tabular-nums; }
+
+/* ===== QUÉ ES ===== */
+.quees { display: grid; grid-template-columns: 1.6fr 1fr; background: var(--oliva); color: var(--arena); }
+.quees .body { position: relative; overflow: hidden; padding: clamp(56px, 7vw, 100px) clamp(24px, 5vw, 72px) clamp(120px, 14vw, 190px) max(16px, env(safe-area-inset-left, 0px)); }
+.quees .inner { position: relative; z-index: 1; max-width: 540px; margin-left: auto; display: grid; gap: 22px; }
+.quees .emblema { width: 92px; }
+.quees p { font-size: clamp(1.05rem, 1.6vw, 1.2rem); line-height: 1.6; }
+.pilares { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.pilares span { padding: 7px 14px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(216,215,154,.6); color: var(--salvia); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.quees .ghost { position: absolute; left: -2%; bottom: -4%; width: 104%; color: var(--oliva-claro); opacity: .35; pointer-events: none; }
+.quees figure { margin: 0; position: relative; min-height: 340px; }
+.quees .tag { left: auto; right: 22px; }
+
+/* ===== PRÓXIMA ===== */
+.proxima { background: var(--salvia); color: var(--oliva); padding-block: clamp(64px, 8vw, 110px); }
+.proxima .grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.proxima .text { display: grid; gap: 20px; min-width: 0; }
+.proxima h2 { font-size: clamp(2.1rem, 4.4vw, 3.3rem); text-transform: uppercase; }
+.proxima h3 { font-size: clamp(1.25rem, 2.2vw, 1.7rem); text-transform: uppercase; color: var(--tinta); }
+.fecha { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { background: var(--oliva); color: var(--salvia); padding: 8px 14px; border-radius: 999px; font-size: .76rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.chip.alt { background: transparent; color: var(--oliva); box-shadow: inset 0 0 0 1px var(--oliva); }
+.cuenta { display: flex; align-items: baseline; gap: 12px; padding: 14px 18px; background: var(--arena); border-radius: 18px; width: fit-content; max-width: 100%; }
+.cuenta b { font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 400; color: var(--terracota); font-variant-numeric: tabular-nums; line-height: 1; }
+.cuenta span { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--tinta); }
+.proxima p { color: var(--tinta); max-width: 34em; }
+.incluye { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; color: var(--tinta); }
+.incluye li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: baseline; }
+.incluye li::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--terracota); transform: translateY(1px); }
+.collage { position: relative; aspect-ratio: 1 / 1.02; max-width: 100%; margin: 0; }
+.collage img { position: absolute; object-fit: cover; box-shadow: 0 18px 40px rgba(59,60,18,.18); transition: transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s; }
+.collage img:hover { z-index: 2; transform: translateY(-8px) rotate(-1.2deg) scale(1.02); box-shadow: 0 28px 50px rgba(59,60,18,.28); }
+.pilares span { transition: background .3s, color .3s; }
+.pilares span:hover { background: var(--salvia); color: var(--oliva); }
+.incluye li::before { transition: transform .3s; }
+.incluye li:hover::before { transform: translateY(1px) scale(1.5); }
+.collage .a { right: 0; top: 0; width: 60%; height: 64%; }
+.collage .b { left: 0; bottom: 6%; width: 64%; height: 62%; border: 6px solid var(--salvia); }
+.collage .emblema { position: absolute; right: 4%; bottom: 0; width: 22%; color: var(--oliva-claro); animation: girar 40s linear infinite; }
+@keyframes girar { to { transform: rotate(360deg); } }
+.collage figcaption { position: absolute; left: 0; top: 4%; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--oliva); max-width: 30%; }
+
+/* ===== EVENTOS ===== */
+.eventos { background: var(--arena); padding-block: clamp(64px, 8vw, 110px); color: var(--oliva); }
+.eventos .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 32px; }
+.eventos h2 { font-size: clamp(2.1rem, 4.4vw, 3.3rem); text-transform: uppercase; }
+.eventos .head p { max-width: 30em; color: var(--tinta); }
+.galeria { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: clamp(140px, 17vw, 210px); gap: 12px; }
+.galeria figure { margin: 0; position: relative; overflow: hidden; background: var(--salvia); border-radius: 6px; }
+.galeria button { all: unset; display: block; width: 100%; height: 100%; cursor: zoom-in; }
+.galeria button:focus-visible { outline: 2px solid var(--terracota); outline-offset: -4px; }
+.galeria img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.galeria figure:hover img { transform: scale(1.05); }
+.galeria figcaption { position: absolute; left: 10px; bottom: 10px; background: rgba(238,231,221,.92); color: var(--oliva); padding: 5px 10px; border-radius: 999px; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; pointer-events: none; transition: background .35s, color .35s, padding .35s; }
+.galeria figure::after { content: "+"; position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--arena); color: var(--oliva); font-size: 1.3rem; line-height: 1; pointer-events: none; opacity: 0; transform: scale(.6) rotate(-90deg); transition: opacity .35s, transform .45s cubic-bezier(.2,.7,.2,1); }
+.galeria figure:hover::after { opacity: 1; transform: none; }
+.galeria figure:hover figcaption { background: var(--terracota); color: var(--arena); padding-inline: 14px; }
+.g1 { grid-column: span 2; grid-row: span 2; }
+.g2 { grid-row: span 2; }
+.g5 { grid-column: span 2; }
+.galeria-nota { margin-top: 16px; font-size: .8rem; color: var(--oliva-claro); }
+
+/* lightbox */
+dialog.lb { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100%; color: var(--arena); }
+dialog.lb::backdrop { background: rgba(29,30,8,.92); }
+.lb-in { position: absolute; inset: 0; display: grid; grid-template-rows: 1fr auto; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lb-in img { width: 100%; height: 100%; object-fit: contain; min-height: 0; touch-action: pan-y; }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; }
+.lb-bar p { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; font-variant-numeric: tabular-nums; }
+.lb-btns { display: flex; gap: 8px; }
+.lb-btns button { width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(238,231,221,.14); cursor: pointer; font-size: 1.1rem; }
+.lb-btns button:hover { background: rgba(238,231,221,.28); }
+
+/* ===== MARCAS ===== */
+.marcas { background: var(--rosa); color: var(--terracota); padding-block: clamp(64px, 8vw, 110px) 0; }
+.marcas h2 { font-size: clamp(1.9rem, 3.8vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+.marcas .lead { color: var(--tinta); max-width: 38em; margin-bottom: 36px; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card { background: var(--rosa-suave); border-radius: 22px; padding: 32px 28px; display: grid; gap: 14px; align-content: start; text-align: center; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(160,72,66,.16); }
+.card h3 { font-size: 1.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
+.card p { color: var(--tinta); font-size: .95rem; }
+.card .ico { width: 44px; height: 44px; margin: 0 auto 4px; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.card:hover .ico { transform: rotate(-10deg) scale(1.15); }
+.paso { transition: transform .35s; }
+.paso:hover { transform: translateY(-4px); }
+.dato { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+.dato:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(29,30,8,.2); }
+.sumate .intro img { transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+.sumate .intro img:hover { transform: scale(1.03) rotate(-.6deg); }
+.sub { margin-top: clamp(48px, 6vw, 72px); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+.pasos { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--terracota); }
+.paso { padding: 22px 20px 0 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.paso b { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
+.paso span { color: var(--tinta); font-size: .95rem; }
+.marcas .ghost { width: min(760px, 92%); margin: clamp(40px, 6vw, 72px) auto -2%; color: var(--rosa-suave); opacity: .75; }
+
+/* ===== FORMULARIO ===== */
+.sumate { background: var(--arena); padding-block: clamp(64px, 8vw, 110px); }
+.sumate .grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.sumate .intro { display: grid; gap: 18px; color: var(--oliva); position: sticky; top: calc(var(--nav-h) + 24px); min-width: 0; }
+.sumate h2 { font-size: clamp(2.1rem, 4.4vw, 3.3rem); text-transform: uppercase; }
+.sumate .intro p { color: var(--tinta); max-width: 30em; }
+.sumate .intro img { border-radius: 18px; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+form { display: grid; gap: 18px; min-width: 0; }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.campo { display: grid; gap: 6px; min-width: 0; }
+.campo label, fieldset legend { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--oliva); }
+.campo input, .campo select, .campo textarea { width: 100%; font: inherit; color: var(--tinta); background: #fbf8f3; border: 1px solid #d3cab9; border-radius: 12px; padding: 12px 14px; transition: border-color .2s, box-shadow .2s; }
+.campo textarea { min-height: 96px; resize: vertical; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { outline: none; border-color: var(--oliva); box-shadow: 0 0 0 3px rgba(146,148,51,.25); }
+.campo.err input { border-color: var(--terracota); }
+.campo small { color: var(--terracota); font-size: .78rem; }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { position: relative; cursor: pointer; }
+.chips input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.chips span { display: inline-block; padding: 9px 14px; border-radius: 999px; background: #fbf8f3; box-shadow: inset 0 0 0 1px #d3cab9; font-size: .85rem; transition: background .2s, color .2s, box-shadow .2s; }
+.chips input:checked + span { background: var(--oliva); color: var(--arena); box-shadow: none; }
+.chips input:focus-visible + span { outline: 2px solid var(--terracota); outline-offset: 2px; }
+.preview { background: var(--rosa-suave); border-radius: 16px; padding: 16px 18px; display: grid; gap: 8px; }
+.preview b { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--terracota); }
+.preview pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: .9rem; color: var(--tinta); max-height: 220px; overflow: auto; }
+.enviar { display: flex; flex-wrap: wrap; gap: 10px; }
+.estado { font-size: .85rem; color: var(--oliva); min-height: 1.4em; }
+
+/* ===== CIERRE / CONTACTO ===== */
+.cierre { background: var(--rosa); color: var(--arena); }
+.cierre .bg { position: absolute; inset: 0; background: url(img/flor.webp) center / cover; }
+.cierre .bg::after { content: ""; position: absolute; inset: 0; background: rgba(160,72,66,.45); }
+.cierre .wrap { position: relative; z-index: 1; padding-block: clamp(80px, 11vw, 140px) clamp(56px, 7vw, 90px); display: grid; justify-items: center; text-align: center; gap: 22px; }
+.cierre .eyebrow { letter-spacing: .3em; }
+.cierre h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); max-width: 16em; }
+.cierre p { max-width: 34em; font-size: 1.05rem; }
+.contacto { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 900px; margin-top: 8px; }
+.dato { background: rgba(238,231,221,.95); color: var(--terracota); border-radius: 18px; padding: 18px 18px 14px; display: grid; gap: 10px; text-align: left; min-width: 0; }
+.dato small { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--oliva); display: flex; align-items: center; gap: 8px; }
+.dato small svg { width: 16px; height: 16px; }
+.dato .val { font-size: 1.02rem; overflow-wrap: anywhere; user-select: all; color: var(--tinta); }
+.dato .acc { display: flex; gap: 8px; flex-wrap: wrap; }
+.dato .acc a, .dato .acc button { padding: 7px 12px; border-radius: 999px; border: 0; cursor: pointer; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; text-decoration: none; background: var(--terracota); color: var(--arena); }
+.dato .acc button { background: transparent; color: var(--terracota); box-shadow: inset 0 0 0 1px var(--terracota); }
+footer { position: relative; z-index: 1; border-top: 1px solid rgba(238,231,221,.35); }
+footer .wrap { padding-block: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+footer .wordmark { width: 90px; color: var(--arena); }
+footer a { text-decoration: none; }
+
+/* botón flotante de WhatsApp */
+.wa { position: fixed; right: max(18px, calc(env(safe-area-inset-right, 0px) + 12px)); bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 12px)); z-index: 40; width: 56px; height: 56px; border-radius: 50%; background: var(--terracota); color: var(--arena); display: grid; place-items: center; box-shadow: 0 10px 26px rgba(29,30,8,.3); transition: transform .25s; }
+.wa:hover { transform: scale(1.07); }
+.wa svg { width: 26px; height: 26px; }
+
+.toast { position: fixed; left: 50%; bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px)); z-index: 70; transform: translate(-50%, 140%); background: var(--tinta); color: var(--arena); padding: 12px 18px; border-radius: 999px; font-size: .88rem; transition: transform .35s cubic-bezier(.2,.7,.2,1); pointer-events: none; max-width: calc(100% - 32px); }
+.toast.on { transform: translate(-50%, 0); }
+
+@media (max-width: 960px) {
+  .nav ul { display: none; }
+  .menu-btn { display: block; }
+  .nav .cta { margin-left: auto; }
+}
+@media (max-width: 860px) {
+  .agenda, .quees, .proxima .grid, .sumate .grid { grid-template-columns: 1fr; }
+  .agenda figure { min-height: 280px; }
+  .agenda .body { padding-left: max(16px, env(safe-area-inset-left, 0px)); }
+  .agenda .wordmark { justify-self: start; }
+  .quees .body { padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .quees .inner { margin-left: 0; }
+  .quees figure { min-height: 300px; order: -1; }
+  .cards { grid-template-columns: 1fr; }
+  .pasos { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+  .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  .sumate .intro { position: static; }
+  .sumate .intro img { display: none; }
+  .contacto { grid-template-columns: 1fr; max-width: 440px; }
+}
+@media (max-width: 520px) {
+  .pasos, .fila { grid-template-columns: 1fr; }
+  .collage { aspect-ratio: 1 / 1.1; }
+  .nav .cta { padding: 8px 12px; font-size: .66rem; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav" aria-label="Secciones">
+  <div class="wrap">
+    <a href="#inicio" data-go="inicio" aria-label="Volver al inicio"><div class="wordmark"></div></a>
+    <ul>
+      <li><a href="#que-es" data-go="que-es">Qué es</a></li>
+      <li><a href="#proxima" data-go="proxima">Próxima</a></li>
+      <li><a href="#eventos" data-go="eventos">Eventos</a></li>
+      <li><a href="#marcas" data-go="marcas">Marcas</a></li>
+      <li><a href="#contacto" data-go="contacto">Contacto</a></li>
+    </ul>
+    <a class="cta" href="#sumate" data-go="sumate">Responder</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sheet" aria-label="Abrir menú"><i></i><i></i></button>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <a href="#que-es" data-go="que-es"><span>01</span>¿Qué es AMARI?</a>
+  <a href="#proxima" data-go="proxima"><span>02</span>Próxima experiencia</a>
+  <a href="#eventos" data-go="eventos"><span>03</span>Eventos anteriores</a>
+  <a href="#marcas" data-go="marcas"><span>04</span>Para marcas</a>
+  <a href="#sumate" data-go="sumate"><span>05</span>Responder invitación</a>
+  <a href="#contacto" data-go="contacto"><span>06</span>Contacto</a>
+</div>
+
+<main id="stack">
+
+<header class="panel hero" id="inicio">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="emblema" role="img" aria-label="Emblema de AMARI: un espacio para habitarte"></div>
+    <div class="wordmark" role="img" aria-label="amari"></div>
+    <h1 id="saludo">Una invitación para tu marca</h1>
+    <p>Creamos experiencias para mujeres que unen movimiento, charlas con profesionales y comunidad. Nos encantaría que tu marca sea parte de nuestro próximo encuentro a través de sus productos.</p>
+    <div class="acciones">
+      <a class="btn btn-arena" href="#sumate" data-go="sumate">Quiero participar</a>
+      <a class="btn btn-linea" href="#agenda" data-go="agenda">Conocer AMARI</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Deslizá</div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Un espacio para habitarte</span><span>Movimiento</span><span>Charlas guiadas</span><span>Conexión corporal</span><span>Comunidad</span><span>Bienestar consciente</span>
+      <span>Un espacio para habitarte</span><span>Movimiento</span><span>Charlas guiadas</span><span>Conexión corporal</span><span>Comunidad</span><span>Bienestar consciente</span>
+    </div>
+  </div>
+</header>
+
+<section class="panel agenda" id="agenda" aria-labelledby="agenda-t">
+  <figure>
+    <img src="img/mudra.webp" alt="Manos en mudra durante una práctica de meditación">
+    <span class="tag">Amari Experience</span>
+  </figure>
+  <div class="body">
+    <div class="wordmark" role="img" aria-label="amari"></div>
+    <h2 id="agenda-t">AGENDA</h2>
+    <ol>
+      <li><a href="#que-es" data-go="que-es"><span>01\</span> ¿Qué es AMARI?</a></li>
+      <li><a href="#proxima" data-go="proxima"><span>02\</span> Nuestra próxima experiencia</a></li>
+      <li><a href="#eventos" data-go="eventos"><span>03\</span> Eventos anteriores</a></li>
+      <li><a href="#marcas" data-go="marcas"><span>04\</span> ¿Qué ofrecemos a las marcas?</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="panel quees" id="que-es" aria-label="¿Qué es AMARI?">
+  <div class="body">
+    <div class="inner">
+      <div class="emblema" role="img" aria-label="Emblema de AMARI"></div>
+      <p>AMARI es un proyecto de experiencias para mujeres, donde cada encuentro integra charlas guiadas por profesionales, movimiento, conexión corporal y espacios de reflexión y vínculo.</p>
+      <p>A través de distintas temáticas, AMARI invita a habitar el bienestar desde un lugar más consciente y humano, uniendo conocimiento, experiencia y comunidad, sin exigencias ni modelos rígidos.</p>
+      <div class="pilares"><span>Conocimiento</span><span>Experiencia</span><span>Comunidad</span></div>
+    </div>
+    <div class="wordmark ghost" aria-hidden="true"></div>
+  </div>
+  <figure>
+    <img src="img/brazo.webp" alt="Retrato en blanco y negro de un brazo abrazando el cuerpo">
+    <span class="tag">Amari Experience</span>
+  </figure>
+</section>
+
+<section class="panel proxima" id="proxima" aria-labelledby="proxima-t">
+  <div class="wrap grid">
+    <div class="text">
+      <span class="eyebrow">02\ Próximo encuentro</span>
+      <h2 id="proxima-t">Nuestra próxima experiencia</h2>
+      <h3>Sobre ser vos misma</h3>
+      <div class="fecha">
+        <span class="chip">14 de noviembre</span>
+        <span class="chip alt">Buenos Aires</span>
+      </div>
+      <div class="cuenta" id="cuenta"><b id="dias">21</b><span id="diasTxt">días para el encuentro</span></div>
+      <p>Un encuentro para reflexionar sobre la autenticidad, el miedo a mostrarnos, reconocer nuestro valor y animarnos a ser quienes queremos ser.</p>
+      <ul class="incluye" aria-label="La experiencia incluye">
+        <li>Clase de pilates en Aray</li>
+        <li>Charla guiada por una profesional invitada</li>
+        <li>Espacio de snacks y conexión entre participantes</li>
+      </ul>
+    </div>
+    <figure class="collage">
+      <img class="a" data-py="-0.06" src="img/aray-1.webp" alt="Sala de pilates reformer de Aray">
+      <img class="b" data-py="0.05" src="img/aray-2.webp" alt="Estudio Aray con reformers y nicho circular">
+      <figcaption>Sede: Aray pilates</figcaption>
+      <div class="emblema" aria-hidden="true"></div>
+    </figure>
+  </div>
+</section>
+
+<section class="panel eventos" id="eventos" aria-labelledby="eventos-t">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="eventos-t">Eventos anteriores</h2>
+      <p>Cada edición combina práctica, charla y un momento para compartir. Las participantes se llevan una bolsa con los productos de las marcas que nos acompañan.</p>
+    </div>
+    <div class="galeria" id="galeria">
+      <figure class="g1"><button type="button"><img src="img/grupo.webp" alt="Grupo de participantes posando juntas al final de una experiencia AMARI"></button><figcaption>Comunidad</figcaption></figure>
+      <figure class="g2"><button type="button"><img src="img/estiramiento.webp" alt="Participantes estirando en equipo, apoyadas en el hombro de la compañera"></button><figcaption>Movimiento</figcaption></figure>
+      <figure class="g2"><button type="button"><img src="img/kits.webp" alt="Participantes abriendo bolsas rosas con productos de regalo"></button><figcaption>Kits de marcas</figcaption></figure>
+      <figure class="g5"><button type="button"><img src="img/charla.webp" alt="Participantes sentadas en mesa en U escuchando una charla"></button><figcaption>Charla</figcaption></figure>
+      <figure><button type="button"><img src="img/respiracion.webp" alt="Ejercicio de respiración alterna sentadas sobre mats"></button><figcaption>Respiración</figcaption></figure>
+      <figure><button type="button"><img src="img/postura-nino.webp" alt="Participantes en postura del niño sobre mats de yoga"></button><figcaption>Práctica</figcaption></figure>
+      <figure class="g5"><button type="button"><img src="img/grupo-estudio.webp" alt="Grupo de participantes en un estudio de yoga con paredes de ladrillo blanco"></button><figcaption>Encuentro</figcaption></figure>
+      <figure class="g5"><button type="button"><img src="img/relajacion.webp" alt="Relajación final acostadas sobre mats con luz cálida"></button><figcaption>Relajación</figcaption></figure>
+    </div>
+    <p class="galeria-nota">Tocá una foto para verla en grande.</p>
+  </div>
+</section>
+
+<section class="panel marcas" id="marcas" aria-labelledby="marcas-t">
+  <div class="wrap">
+    <h2 id="marcas-t">¿Qué ofrecemos a las marcas?</h2>
+    <p class="lead">Integramos tus productos en la experiencia y en los kits que recibe cada participante. A cambio, tu marca gana presencia real en una comunidad de mujeres que eligen el bienestar.</p>
+    <div class="cards">
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="13" width="36" height="26" rx="5"/><circle cx="24" cy="26" r="7"/><path d="M17 13l3-5h8l3 5"/></svg>
+        <h3>Contenido visual</h3>
+        <p>Fotografías de los productos integrados en la experiencia.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="9"/><circle cx="24" cy="24" r="7"/><circle cx="33" cy="15" r="1.6" fill="currentColor"/></svg>
+        <h3>Visibilidad digital</h3>
+        <p>Menciones y etiquetas en las redes sociales de AMARI.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="17" cy="18" r="6"/><circle cx="31" cy="18" r="6"/><path d="M6 38c1.5-6 6-9 11-9s9.5 3 11 9M22 33c1.8-2.6 5-4 9-4 5 0 9.5 3 11 9"/></svg>
+        <h3>Conexión con la comunidad</h3>
+        <p>Presencia de marca en un entorno de bienestar y experiencias compartidas.</p>
+      </article>
+    </div>
+    <p class="sub">Cómo participar</p>
+    <ol class="pasos">
+      <li class="paso"><b>1. Nos respondés</b><span>Contanos si te sumás y qué productos querés compartir.</span></li>
+      <li class="paso"><b>2. Coordinamos</b><span>Definimos cantidades y el envío antes del evento.</span></li>
+      <li class="paso"><b>3. La experiencia</b><span>Tus productos llegan a cada participante en su kit.</span></li>
+      <li class="paso"><b>4. Te compartimos</b><span>Fotos del evento y las menciones en redes.</span></li>
+    </ol>
+  </div>
+  <div class="wordmark ghost" aria-hidden="true"></div>
+</section>
+
+<section class="panel sumate" id="sumate" aria-labelledby="sumate-t">
+  <div class="wrap grid">
+    <div class="intro">
+      <span class="eyebrow" id="respTag">Tu respuesta</span>
+      <h2 id="sumate-t">¿Te sumás a AMARI?</h2>
+      <p>Respondé a nuestra invitación en un minuto: completá estos datos y el mensaje se arma solo. Nos lo enviás por WhatsApp o por email y te escribimos para coordinar el envío de los productos.</p>
+      <img src="img/kits.webp" alt="Participantes abriendo los kits con productos de marcas">
+    </div>
+    <form id="form" novalidate>
+      <div class="fila">
+        <div class="campo"><label for="f-marca">Marca *</label><input id="f-marca" name="marca" autocomplete="organization" placeholder="Nombre de la marca" required><small hidden>Escribí el nombre de tu marca.</small></div>
+        <div class="campo"><label for="f-nombre">Tu nombre *</label><input id="f-nombre" name="nombre" autocomplete="name" placeholder="Quién nos escribe" required><small hidden>Escribí tu nombre.</small></div>
+      </div>
+      <div class="fila">
+        <div class="campo"><label for="f-ig">Instagram de la marca</label><input id="f-ig" name="ig" placeholder="@tumarca"></div>
+        <div class="campo"><label for="f-mail">Email o teléfono</label><input id="f-mail" name="contacto" autocomplete="email" placeholder="Para responderte"></div>
+      </div>
+      <fieldset>
+        <legend>Tu respuesta *</legend>
+        <div class="chips" id="respuesta">
+          <label><input type="radio" name="resp" id="resp-si" value="si" checked><span>Sí, queremos sumarnos</span></label>
+          <label><input type="radio" name="resp" id="resp-info" value="info"><span>Nos interesa, queremos más info</span></label>
+          <label><input type="radio" name="resp" id="resp-llamada" value="llamada"><span>Coordinemos una llamada</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Rubro</legend>
+        <div class="chips" id="rubros">
+          <label><input type="checkbox" id="r-skin" value="Skincare y cosmética"><span>Skincare y cosmética</span></label>
+          <label><input type="checkbox" id="r-snack" value="Snacks saludables"><span>Snacks saludables</span></label>
+          <label><input type="checkbox" id="r-beb" value="Bebidas e infusiones"><span>Bebidas e infusiones</span></label>
+          <label><input type="checkbox" id="r-ropa" value="Ropa y accesorios deportivos"><span>Ropa y accesorios</span></label>
+          <label><input type="checkbox" id="r-aroma" value="Aromas y velas"><span>Aromas y velas</span></label>
+          <label><input type="checkbox" id="r-pap" value="Papelería y journaling"><span>Papelería</span></label>
+          <label><input type="checkbox" id="r-otro" value="Otro"><span>Otro</span></label>
+        </div>
+      </fieldset>
+      <div class="fila">
+        <div class="campo"><label for="f-prod">¿Qué productos?</label><input id="f-prod" name="productos" placeholder="Ej.: muestras de sérum, barritas"></div>
+        <div class="campo"><label for="f-cant">Cantidad aproximada</label><input id="f-cant" name="cantidad" inputmode="numeric" placeholder="Ej.: 25 unidades"></div>
+      </div>
+      <div class="campo">
+        <label for="f-evento">¿Para qué experiencia?</label>
+        <select id="f-evento" name="evento">
+          <option>14 de noviembre · Sobre ser vos misma</option>
+          <option>Próximas experiencias</option>
+          <option>Las dos</option>
+        </select>
+      </div>
+      <div class="campo"><label for="f-msj">Mensaje</label><textarea id="f-msj" name="mensaje" placeholder="Algo más que quieras contarnos"></textarea></div>
+      <div class="preview" aria-live="polite"><b>Tu mensaje</b><pre id="preview"></pre></div>
+      <div class="enviar">
+        <a class="btn btn-terracota" id="sendWa" href="https://wa.me/5491173711167" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>
+          Enviar por WhatsApp</a>
+        <a class="btn btn-oliva" id="sendMail" href="https://mail.google.com/mail/?view=cm&amp;to=amari.experiences@gmail.com" target="_blank" rel="noopener">Enviar por email</a>
+        <button class="btn btn-suave" type="button" id="copyMsg">Copiar mensaje</button>
+      </div>
+      <p class="estado" id="estado">Tu borrador se guarda en este navegador.</p>
+    </form>
+  </div>
+</section>
+
+<section class="panel cierre" id="contacto" aria-labelledby="cierre-t">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Un espacio para habitarte</span>
+    <h2 id="cierre-t">Nos encantaría contar con tu marca</h2>
+    <p>Si preferís escribirnos directo, estos son nuestros datos. Armamos juntas la propuesta para el 14 de noviembre o para las próximas experiencias.</p>
+    <div class="contacto">
+      <div class="dato">
+        <small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram</small>
+        <span class="val">@amari_experience</span>
+        <div class="acc"><a href="https://www.instagram.com/amari_experience/" target="_blank" rel="noopener">Ver perfil</a><button type="button" data-copy="@amari_experience">Copiar</button></div>
+      </div>
+      <div class="dato">
+        <small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg>Email</small>
+        <span class="val">amari.experiences@gmail.com</span>
+        <div class="acc"><a href="https://mail.google.com/mail/?view=cm&amp;to=amari.experiences@gmail.com&amp;su=Marca%20para%20AMARI%20Experience" target="_blank" rel="noopener">Escribir</a><button type="button" data-copy="amari.experiences@gmail.com">Copiar</button></div>
+      </div>
+      <div class="dato">
+        <small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>WhatsApp</small>
+        <span class="val">+54 11 7371-1167</span>
+        <div class="acc"><a href="https://wa.me/5491173711167?text=Hola%20AMARI!%20Recibimos%20su%20invitaci%C3%B3n%20para%20marcas%20y%20queremos%20saber%20m%C3%A1s." target="_blank" rel="noopener">Abrir chat</a><button type="button" data-copy="+54 11 7371-1167">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <div class="wordmark" role="img" aria-label="amari"></div>
+      <span>Amari Experience · Buenos Aires</span>
+      <a href="#inicio" data-go="inicio">Volver arriba ↑</a>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<a class="wa" href="https://wa.me/5491173711167?text=Hola%20AMARI!%20Recibimos%20su%20invitaci%C3%B3n%20para%20marcas%20y%20queremos%20saber%20m%C3%A1s." target="_blank" rel="noopener" aria-label="Escribir a AMARI por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>
+</a>
+
+<dialog class="lb" id="lb" aria-label="Foto ampliada">
+  <div class="lb-in">
+    <img id="lbImg" src="img/grupo.webp" alt="">
+    <div class="lb-bar">
+      <p id="lbCap">1 / 8</p>
+      <div class="lb-btns">
+        <button type="button" id="lbPrev" aria-label="Foto anterior">←</button>
+        <button type="button" id="lbNext" aria-label="Foto siguiente">→</button>
+        <button type="button" id="lbClose" aria-label="Cerrar">✕</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const panels = $$('.panel');
+  const nav = $('#nav');
+
+  // Apariciones: textos suben, fotos se destapan. Solo se ocultan en el instante en que entran en pantalla.
+  if (!reduce && 'IntersectionObserver' in window) {
+    const groups = [
+      ['rv-t', '.panel:not(.hero) h2, .proxima h3'],
+      ['rv', '.panel:not(.hero) .eyebrow, .lead, .text > p, .head p, .quees p, .pilares, .fecha, .cuenta, .incluye li, .agenda li, .agenda .wordmark, .card, .sub, .paso, .intro p, .campo, fieldset, .preview, .enviar, .dato, .cierre p, .galeria-nota'],
+      ['rv-img', '.agenda figure, .quees figure, .galeria figure, .collage img, .sumate .intro img']
+    ];
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }));
+    groups.forEach(([cls, sel]) => $$(sel).forEach(el => {
+      el.classList.add(cls);
+      const sibs = [...el.parentElement.children].filter(c => c.matches(sel));
+      el.style.setProperty('--d', Math.min(sibs.indexOf(el), 6) * 0.09 + 's');
+      io.observe(el);
+    }));
+  }
+
+  const navLinks = $$('.nav ul a');
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    const sy = scrollY, vh = innerHeight;
+    const max = document.documentElement.scrollHeight - vh;
+    $('#progress').style.setProperty('--p', max > 0 ? sy / max : 0);
+    nav.classList.toggle('on', sy > vh * 0.6);
+    const probe = sy + vh * 0.4;
+    const cur = panels.find(p => probe >= p.offsetTop && probe < p.offsetTop + p.offsetHeight);
+    const id = cur ? cur.id : '';
+    navLinks.forEach(a => a.classList.toggle('act', a.dataset.go === id || (id === 'sumate' && a.dataset.go === 'marcas')));
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  function go(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (id === 'inicio') scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-go]');
+    if (!a) return;
+    e.preventDefault();
+    closeSheet();
+    go(a.dataset.go);
+  });
+  // Link personalizado: ...#nombre-de-la-marca saluda a esa marca; un #seccion lleva a esa sección
+  const hash = decodeURIComponent(location.hash.slice(1));
+  let marcaLink = '';
+  if (hash && document.getElementById(hash)) setTimeout(() => go(hash), 300);
+  else if (hash && /^[\w.~-]+$/.test(hash) && !/^amari(-?(x|para|con|y))?$/i.test(hash)) {
+    marcaLink = hash.replace(/^amari(-?(x|para|con|y))?(-|$)/i, '').replace(/[-_]+/g, ' ').trim().replace(/\b\w/g, c => c.toUpperCase());
+    $('#saludo').textContent = 'Una invitación para ' + marcaLink;
+    $('#respTag').textContent = 'Respuesta de ' + marcaLink;
+    document.title = 'AMARI Experience × ' + marcaLink;
+  }
+
+  // Menú móvil
+  const sheet = $('#sheet'), menuBtn = $('#menuBtn');
+  function closeSheet() { sheet.classList.remove('open'); sheet.setAttribute('aria-hidden', 'true'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  menuBtn.addEventListener('click', () => {
+    const open = !sheet.classList.contains('open');
+    sheet.classList.toggle('open', open);
+    sheet.setAttribute('aria-hidden', String(!open));
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+  // Cuenta regresiva al 14/11 (hora de Buenos Aires)
+  (function cuenta() {
+    const target = Date.UTC(2026, 10, 14, 3);
+    const diff = target - Date.now();
+    const dias = Math.ceil(diff / 864e5);
+    const b = $('#dias'), s = $('#diasTxt');
+    if (diff > 864e5) { b.textContent = dias; s.textContent = 'días para el encuentro'; }
+    else if (diff > 0) { b.textContent = '1'; s.textContent = 'día: ¡es mañana!'; }
+    else if (diff > -864e5) { b.textContent = 'Hoy'; s.textContent = 'es el encuentro'; }
+    else { $('#cuenta').hidden = true; }
+  })();
+
+  // Lightbox de la galería
+  const figs = $$('#galeria figure');
+  const lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+  let idx = 0;
+  function show(i) {
+    idx = (i + figs.length) % figs.length;
+    const img = $('img', figs[idx]);
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCap.textContent = `${idx + 1} / ${figs.length} · ${$('figcaption', figs[idx]).textContent}`;
+  }
+  figs.forEach((f, i) => $('button', f).addEventListener('click', () => { show(i); lb.showModal(); }));
+  $('#lbPrev').onclick = () => show(idx - 1);
+  $('#lbNext').onclick = () => show(idx + 1);
+  $('#lbClose').onclick = () => lb.close();
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-in')) lb.close(); });
+  lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(idx - 1); if (e.key === 'ArrowRight') show(idx + 1); });
+  let sx = null;
+  lbImg.addEventListener('pointerdown', e => { sx = e.clientX; });
+  lbImg.addEventListener('pointerup', e => { if (sx !== null && Math.abs(e.clientX - sx) > 40) show(idx + (e.clientX < sx ? 1 : -1)); sx = null; });
+
+  // Toast + copiar
+  const toast = $('#toast');
+  let tt;
+  function say(msg) { toast.textContent = msg; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('on'), 2200); }
+  function selectText(el) { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  function copy(text, fallbackEl, ok) {
+    const p = navigator.clipboard && navigator.clipboard.writeText(text);
+    if (p) p.then(() => say(ok), () => { if (fallbackEl) selectText(fallbackEl); say('Texto seleccionado: copialo con Ctrl+C'); });
+    else { if (fallbackEl) selectText(fallbackEl); say('Texto seleccionado: copialo con Ctrl+C'); }
+  }
+  $$('[data-copy]').forEach(b => b.addEventListener('click', () => copy(b.dataset.copy, $('.val', b.closest('.dato')), 'Copiado: ' + b.dataset.copy)));
+
+  // Formulario: arma el mensaje y los enlaces de envío
+  const form = $('#form');
+  const fields = ['f-marca', 'f-nombre', 'f-ig', 'f-mail', 'f-prod', 'f-cant', 'f-evento', 'f-msj'];
+  const KEY = 'amari-marca-borrador';
+  const val = id => $('#' + id).value.trim();
+  function rubros() { return $$('#rubros input:checked').map(i => i.value); }
+  const RESP = {
+    si: '¡Nos encantaría sumarnos con nuestros productos!',
+    info: 'Nos interesa y nos gustaría recibir más información.',
+    llamada: 'Nos gustaría coordinar una llamada para conversarlo.'
+  };
+  function mensaje() {
+    const l = [];
+    l.push(`¡Hola AMARI! Soy ${val('f-nombre') || '[tu nombre]'}, de ${val('f-marca') || '[tu marca]'}${val('f-ig') ? ' (' + val('f-ig') + ')' : ''}.`);
+    l.push('Recibimos su invitación para AMARI Experience. ' + RESP[($('#respuesta input:checked') || {}).value || 'si']);
+    l.push('');
+    const r = rubros();
+    if (r.length) l.push('Rubro: ' + r.join(', '));
+    if (val('f-prod')) l.push('Productos: ' + val('f-prod'));
+    if (val('f-cant')) l.push('Cantidad aproximada: ' + val('f-cant'));
+    l.push('Experiencia: ' + val('f-evento'));
+    if (val('f-mail')) l.push('Contacto: ' + val('f-mail'));
+    if (val('f-msj')) { l.push(''); l.push(val('f-msj')); }
+    return l.join('\n');
+  }
+  function update() {
+    const m = mensaje();
+    $('#preview').textContent = m;
+    $('#sendWa').href = 'https://wa.me/5491173711167?text=' + encodeURIComponent(m);
+    $('#sendMail').href = 'https://mail.google.com/mail/?view=cm&to=amari.experiences@gmail.com&su=' + encodeURIComponent('Respuesta a la invitación de AMARI: ' + (val('f-marca') || '')) + '&body=' + encodeURIComponent(m);
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ f: Object.fromEntries(fields.map(id => [id, $('#' + id).value])), r: $$('#rubros input, #respuesta input').filter(i => i.checked).map(i => i.id) }));
+    } catch (e) {}
+  }
+  function valid() {
+    let ok = true;
+    ['f-marca', 'f-nombre'].forEach(id => {
+      const c = $('#' + id).closest('.campo'), bad = !val(id);
+      c.classList.toggle('err', bad); $('small', c).hidden = !bad;
+      if (bad && ok) { $('#' + id).focus(); ok = false; }
+    });
+    return ok;
+  }
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (d) { fields.forEach(id => { if (d.f && d.f[id] != null) $('#' + id).value = d.f[id]; }); (d.r || []).forEach(id => { const i = $('#' + id); if (i) i.checked = true; }); }
+  } catch (e) {}
+  form.addEventListener('input', e => {
+    update();
+    const c = e.target.closest('.campo.err');
+    if (c && e.target.value.trim()) { c.classList.remove('err'); $('small', c).hidden = true; }
+  });
+  form.addEventListener('submit', e => e.preventDefault());
+  ['sendWa', 'sendMail'].forEach(id => $('#' + id).addEventListener('click', e => {
+    update();
+    if (!valid()) { e.preventDefault(); say('Completá marca y nombre para enviar'); return; }
+    $('#estado').textContent = id === 'sendWa' ? 'Abrimos WhatsApp en otra pestaña con tu mensaje listo. Revisalo y tocá enviar.' : 'Abrimos Gmail en otra pestaña con tu mensaje listo. Revisalo y tocá enviar.';
+  }));
+  $('#copyMsg').addEventListener('click', () => { update(); copy(mensaje(), $('#preview'), 'Mensaje copiado'); });
+  if (marcaLink && !val('f-marca')) $('#f-marca').value = marcaLink;
+  update();
+})();
+</script>
+
+</body>
+</html>
