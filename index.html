@@ -61,10 +61,156 @@ p { margin: 0; }
 .menu-btn i { display: block; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s; }
 .menu-btn[aria-expanded="true"] i:first-child { transform: translateY(4px) rotate(45deg); }
 .menu-btn[aria-expanded="true"] i:last-child { transform: translateY(-4px) rotate(-45deg); }
-.sheet { position: fixed; inset: 0; z-index: 45; background: var(--oliva); color: var(--arena); padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 28px) max(16px, env(safe-area-inset-right, 0px)) 32px max(16px, env(safe-area-inset-left, 0px)); display: grid; align-content: start; gap: 6px; clip-path: circle(0 at calc(100% - 36px) 30px); transition: clip-path .6s cubic-bezier(.7,0,.2,1); visibility: hidden; }
-.sheet.open { clip-path: circle(150% at calc(100% - 36px) 30px); visibility: visible; }
-.sheet a { font-size: clamp(1.6rem, 8vw, 2.4rem); text-decoration: none; padding: 8px 0; border-bottom: 1px solid rgba(238,231,221,.25); display: flex; gap: 14px; align-items: baseline; }
-.sheet a span { font-size: .8rem; color: var(--salvia); font-variant-numeric: tabular-nums; }
+/* ===== MENÚ SOFT & CHIC ===== */
+/* ===== MENÚ EDITORIAL AMARI ===== */
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: var(--oliva);
+  color: var(--arena);
+
+  padding: calc(var(--nav-h) + 30px) 5% 28px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+
+  transition: transform .5s ease,
+              opacity .4s ease,
+              visibility .5s;
+}
+
+.sheet.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Logo superior */
+
+.sheet-header .wordmark {
+  width: 125px;
+  color: var(--arena);
+}
+
+/* Contenedor de enlaces */
+
+.sheet-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 950px;
+  margin: auto;
+}
+
+/* Cada opción */
+
+.sheet .menu-link {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 17px 0;
+
+  color: var(--arena);
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(238,231,221,.25);
+  transition: color .3s ease;
+}
+
+/* Números */
+
+.sheet .menu-num {
+  font-size: .75rem;
+  color: var(--salvia);
+  min-width: 28px;
+}
+
+/* Textos */
+
+.sheet .menu-text {
+  flex: 1;
+  font-size: clamp(1.4rem, 3vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  transition: transform .3s ease;
+}
+
+/* Flechas */
+
+.sheet .menu-arrow {
+  font-size: 1.4rem;
+  transition: transform .3s ease;
+}
+
+/* Animación hover */
+
+.sheet .menu-link:hover {
+  color: var(--salvia);
+}
+
+.sheet .menu-link:hover .menu-text {
+  transform: translateX(8px);
+}
+
+.sheet .menu-link:hover .menu-arrow {
+  transform: translate(4px, -4px);
+}
+
+/* Footer */
+
+.sheet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sheet-footer a,
+.sheet-footer span {
+  color: var(--salvia);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-decoration: none;
+}
+
+/* Versión móvil */
+
+@media (max-width: 600px) {
+  .sheet {
+    padding: calc(var(--nav-h) + 24px) 24px 24px;
+  }
+
+  .sheet .menu-link {
+    padding: 14px 0;
+    gap: 12px;
+  }
+
+  .sheet .menu-text {
+    font-size: clamp(1.2rem, 5vw, 1.7rem);
+  }
+}
+
+/* Botón de cierre visible */
+
+.nav:has(.menu-btn[aria-expanded="true"]) {
+  z-index: 55;
+  background: var(--oliva);
+  color: var(--arena);
+}
+
+.menu-btn {
+  position: relative;
+  z-index: 56;
+}
 
 /* ===== SECCIONES ===== */
 .panel { position: relative; overflow: clip; scroll-margin-top: var(--nav-h); }
@@ -216,9 +362,9 @@ figure:hover > .tag { letter-spacing: .28em; }
 .incluye li:hover::before { transform: translateY(1px) scale(1.5); }
 .collage .a { right: 0; top: 0; width: 60%; height: 64%; }
 .collage .b { left: 0; bottom: 6%; width: 64%; height: 62%; border: 6px solid var(--salvia); }
-.collage .emblema { position: absolute; right: 4%; bottom: 0; width: 22%; color: var(--oliva-claro); animation: girar 40s linear infinite; }
+.collage .emblema { position: absolute; right: 4%; bottom: 0; width: 22%; color: var(--oliva-claro); animation: girar 40s linear infinite reverse; }
 @keyframes girar { to { transform: rotate(360deg); } }
-.collage figcaption { position: absolute; left: 0; top: 4%; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--oliva); max-width: 30%; }
+.collage figcaption { position: absolute; left: 5%; top: 28%; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--oliva); max-width: 30%; }
 
 /* ===== EVENTOS ===== */
 .eventos { background: var(--arena); padding-block: clamp(64px, 8vw, 110px); color: var(--oliva); }
@@ -320,7 +466,12 @@ fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width
 .dato .acc { display: flex; gap: 8px; flex-wrap: wrap; }
 .dato .acc a, .dato .acc button { padding: 7px 12px; border-radius: 999px; border: 0; cursor: pointer; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; text-decoration: none; background: var(--terracota); color: var(--arena); }
 .dato .acc button { background: transparent; color: var(--terracota); box-shadow: inset 0 0 0 1px var(--terracota); }
-footer { position: relative; z-index: 1; border-top: 1px solid rgba(238,231,221,.35); }
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(238,231,221,.35);
+  overflow: hidden;
+}
 footer .wrap {
   padding: 30px 20px;
   display: flex;
@@ -348,8 +499,38 @@ footer a { text-decoration: none; }
 .wa:hover { transform: scale(1.07); }
 .wa svg { width: 26px; height: 26px; }
 
-.toast { position: fixed; left: 50%; bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px)); z-index: 70; transform: translate(-50%, 140%); background: var(--tinta); color: var(--arena); padding: 12px 18px; border-radius: 999px; font-size: .88rem; transition: transform .35s cubic-bezier(.2,.7,.2,1); pointer-events: none; max-width: calc(100% - 32px); }
-.toast.on { transform: translate(-50%, 0); }
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 70;
+
+  transform: translate(-50%, 140%);
+  opacity: 0;
+  visibility: hidden;
+
+  background: var(--tinta);
+  color: var(--arena);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: .88rem;
+  pointer-events: none;
+
+  max-width: calc(100% - 32px);
+
+  transition:
+    transform .35s cubic-bezier(.2,.7,.2,1),
+    opacity .3s ease,
+    visibility .3s;
+}
+
+/* Mostrar el mensaje al copiar */
+
+.toast.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  visibility: visible;
+}.toast.on { transform: translate(-50%, 0); }
 
 @media (max-width: 960px) {
   .nav ul { display: none; }
@@ -394,13 +575,51 @@ footer a { text-decoration: none; }
   </div>
   <div class="progress" id="progress"></div>
 </nav>
+<!-- ===== MENÚ SOFT & CHIC ===== -->
 <div class="sheet" id="sheet" aria-hidden="true">
-  <a href="#que-es" data-go="que-es">¿Qué es AMARI?</a>
-  <a href="#proxima" data-go="proxima">Próxima experiencia</a>
-  <a href="#eventos" data-go="eventos">Eventos anteriores</a>
-  <a href="#marcas" data-go="marcas">Para marcas</a>
-  <a href="#sumate" data-go="sumate">Responder invitación</a>
-  <a href="#contacto" data-go="contacto">Contacto</a>
+
+ 
+
+<div class="sheet-links">
+
+  <a href="#que-es" data-go="que-es" class="menu-link">
+    <span class="menu-num">01</span>
+    <span class="menu-text">¿Qué es AMARI?</span>
+    <span class="menu-arrow">↗</span>
+  </a>
+
+  <a href="#proxima" data-go="proxima" class="menu-link">
+    <span class="menu-num">02</span>
+    <span class="menu-text">Próxima experiencia</span>
+    <span class="menu-arrow">↗</span>
+  </a>
+
+  <a href="#eventos" data-go="eventos" class="menu-link">
+    <span class="menu-num">03</span>
+    <span class="menu-text">Nuestros encuentros</span>
+    <span class="menu-arrow">↗</span>
+  </a>
+
+  <a href="#marcas" data-go="marcas" class="menu-link">
+    <span class="menu-num">04</span>
+    <span class="menu-text">Colaboraciones</span>
+    <span class="menu-arrow">↗</span>
+  </a>
+
+  <a href="#sumate" data-go="sumate" class="menu-link">
+    <span class="menu-num">05</span>
+    <span class="menu-text">Confirmá tu asistencia</span>
+    <span class="menu-arrow">↗</span>
+  </a>
+
+  <a href="#contacto" data-go="contacto" class="menu-link">
+    <span class="menu-num">06</span>
+    <span class="menu-text">Hablemos</span>
+    <span class="menu-arrow">↗</span>
+  </a>
+
+</div>
+
 </div>
 
 <main id="stack">
