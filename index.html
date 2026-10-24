@@ -167,6 +167,42 @@ figure:hover > .tag { letter-spacing: .28em; }
 .cuenta { display: flex; align-items: baseline; gap: 12px; padding: 14px 18px; background: var(--arena); border-radius: 18px; width: fit-content; max-width: 100%; }
 .cuenta b { font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 400; color: var(--terracota); font-variant-numeric: tabular-nums; line-height: 1; }
 .cuenta span { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--tinta); }
+/* ===== COUNTDOWN AMARI ===== */
+
+.cuenta.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 12px;
+  padding: 22px 18px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.countdown .tiempo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.countdown .tiempo b {
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  line-height: 1;
+  color: var(--terracota);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown .tiempo span {
+  font-size: clamp(.58rem, 1.3vw, .78rem);
+  letter-spacing: .1em;
+  color: var(--tinta);
+  font-weight: 700;
+  text-align: center;
+}
 .proxima p { color: var(--tinta); max-width: 34em; }
 .incluye { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; color: var(--tinta); }
 .incluye li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: baseline; }
@@ -432,8 +468,24 @@ footer a { text-decoration: none; }
         <span class="chip">14 de noviembre</span>
         <span class="chip alt">Buenos Aires</span>
       </div>
-      <div class="cuenta" id="cuenta"><b id="dias">20</b><span id="diasTxt">días para el encuentro</span></div>
-      <p>Un encuentro para reflexionar sobre la autenticidad, el miedo a mostrarnos, reconocer nuestro valor y animarnos a ser quienes queremos ser.</p>
+<div class="cuenta countdown" id="cuenta">
+  <div class="tiempo">
+    <b id="dias">00</b>
+    <span>DÍAS</span>
+  </div>
+  <div class="tiempo">
+    <b id="horas">00</b>
+    <span>HORAS</span>
+  </div>
+  <div class="tiempo">
+    <b id="minutos">00</b>
+    <span>MIN</span>
+  </div>
+  <div class="tiempo">
+    <b id="segundos">00</b>
+    <span>SEG</span>
+  </div>
+</div>      <p>Un encuentro para reflexionar sobre la autenticidad, el miedo a mostrarnos, reconocer nuestro valor y animarnos a ser quienes queremos ser.</p>
       <ul class="incluye" aria-label="La experiencia incluye">
         <li>Clase de pilates en Aray</li>
         <li>Charla guiada por una profesional invitada</li>
@@ -696,17 +748,34 @@ footer a { text-decoration: none; }
   });
   addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
 
-  // Cuenta regresiva al 14/11 (hora de Buenos Aires)
-  (function cuenta() {
-    const target = Date.UTC(2026, 10, 14, 3);
-    const diff = target - Date.now();
-    const dias = Math.ceil(diff / 864e5);
-    const b = $('#dias'), s = $('#diasTxt');
-    if (diff > 864e5) { b.textContent = dias; s.textContent = 'días para el encuentro'; }
-    else if (diff > 0) { b.textContent = '1'; s.textContent = 'día: ¡es mañana!'; }
-    else if (diff > -864e5) { b.textContent = 'Hoy'; s.textContent = 'es el encuentro'; }
-    else { $('#cuenta').hidden = true; }
-  })();
+// ===== COUNTDOWN AMARI =====
+// Evento: 14 de noviembre de 2026, Buenos Aires
+
+const fechaEvento = new Date("2026-11-14T14:00:00-03:00");
+
+function actualizarCountdown() {
+  const diferencia = fechaEvento.getTime() - Date.now();
+  const contador = $('#cuenta');
+
+  if (diferencia <= 0) {
+    contador.textContent = "🤍 IT'S AMARI DAY!";
+    clearInterval(intervaloCountdown);
+    return;
+  }
+
+  const dias = Math.floor(diferencia / 86400000);
+  const horas = Math.floor((diferencia / 3600000) % 24);
+  const minutos = Math.floor((diferencia / 60000) % 60);
+  const segundos = Math.floor((diferencia / 1000) % 60);
+
+  $('#dias').textContent = String(dias).padStart(2, '0');
+  $('#horas').textContent = String(horas).padStart(2, '0');
+  $('#minutos').textContent = String(minutos).padStart(2, '0');
+  $('#segundos').textContent = String(segundos).padStart(2, '0');
+}
+
+const intervaloCountdown = setInterval(actualizarCountdown, 1000);
+actualizarCountdown();
 
   // Lightbox de la galería
   const figs = $$('#galeria figure');
