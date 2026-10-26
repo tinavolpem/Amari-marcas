@@ -364,7 +364,33 @@ figure:hover > .tag { letter-spacing: .28em; }
 .collage .b { left: 0; bottom: 6%; width: 64%; height: 62%; border: 6px solid var(--salvia); }
 .collage .emblema { position: absolute; right: 4%; bottom: 0; width: 22%; color: var(--oliva-claro); animation: girar 40s linear infinite reverse; }
 @keyframes girar { to { transform: rotate(360deg); } }
-.collage figcaption { position: absolute; left: 5%; top: 28%; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--oliva); max-width: 30%; }
+
+.collage figcaption {
+  position: absolute;
+  left: 5%;
+  top: 28%;
+
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--oliva);
+
+  max-width: 40%;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 520px) {
+  .collage figcaption {
+    font-size: clamp(0.6rem, 2.8vw, 0.75rem);
+    letter-spacing: 0.05em;
+    max-width: 45%;
+    left: 4%;
+    top: 25%;
+  }
+}
 
 /* ===== EVENTOS ===== */
 .eventos { background: var(--arena); padding-block: clamp(64px, 8vw, 110px); color: var(--oliva); }
@@ -676,7 +702,7 @@ footer a { text-decoration: none; }
   <div class="wrap grid">
     <div class="text">
       <h2 id="proxima-t">Nuestra próxima experiencia</h2>
-      <h3>Sobre ser vos misma</h3>
+      <h3>Fuera de personaje</h3>
       <div class="fecha">
         <span class="chip">14 de noviembre</span>
         <span class="chip alt">Buenos Aires</span>
@@ -698,11 +724,11 @@ footer a { text-decoration: none; }
     <b id="segundos">00</b>
     <span>SEG</span>
   </div>
-</div>      <p>Un encuentro para reflexionar sobre la autenticidad, el miedo a mostrarnos, reconocer nuestro valor y animarnos a ser quienes queremos ser.</p>
+</div>      <p>Un encuentro para reflexionar sobre la autenticidad, el miedo a mostrarnos, reconocer nuestro valor y animarnos a ser quienes queremos ser.<br><br>Una experiencia íntima de 15 personas, entre participantes, profesionales invitadas y colaboradoras, para compartir una tarde de bienestar, aprendizaje y conexión.</p>
       <ul class="incluye" aria-label="La experiencia incluye">
         <li>Clase de pilates en Aray</li>
         <li>Charla guiada por una profesional invitada</li>
-        <li>Espacio de snacks y conexión entre participantes</li>
+        <li>Espacio de snacks y conexión</li>
       </ul>
     </div>
     <figure class="collage">
